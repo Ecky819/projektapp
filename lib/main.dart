@@ -21,11 +21,11 @@ class _MyAppState extends State<MyApp> {
     setState(() {
       _selectedIndex = index;
     });
-    // Hier können Sie Aktionen basierend auf dem ausgewählten Index ausführen.
-    // Zum Beispiel:
+
     switch (index) {
       case 0:
-        print('Home Icon getippt');
+        
+        //print('Home Icon getippt');
         // Navigieren zum Home-Bildschirm oder entsprechende Aktion
         break;
       case 1:
@@ -74,23 +74,48 @@ class _MyAppState extends State<MyApp> {
         // Hier wird der EndDrawer hinzugefügt
         endDrawer: SizedBox(
           width: 300,
-          height: 650,
+          height: 670,
           child: Drawer(
             backgroundColor: const Color.fromRGBO(243, 239, 231, 1.0),
             child: ListView(
               padding: EdgeInsets.zero, // Entfernt den Standard-Padding
               children: <Widget>[
-                const DrawerHeader(
-                  decoration: BoxDecoration(
+                DrawerHeader(
+                  decoration: const BoxDecoration(
                     color: Color.fromRGBO(40, 58, 73, 1.0),
                   ),
-                  child: Center(
-                    child: Text(
-                      'Unbekannter User',
-                      style: TextStyle(color: Colors.white, fontSize: 24),
-                    ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      const CircleAvatar(
+                        radius: 36,
+                        backgroundImage: AssetImage(
+                          'assets/images/default_avatar.jpg',
+                        ),
+                      ),
+                      const SizedBox(height: 12),
+                      const Text(
+                        'John Doe',
+                        style: TextStyle(
+                          fontFamily: 'SF Pro',
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                      const SizedBox(height: 4),
+                      const Text(
+                        'john.doe@example.com',
+                        style: TextStyle(
+                          fontFamily: 'SF Pro',
+                          fontSize: 14,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
+
                 const SizedBox(height: 14),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(24.0, 0, 24.0, 0),
@@ -112,7 +137,10 @@ class _MyAppState extends State<MyApp> {
                           ),
                         ),
                         icon: const Icon(Icons.home_outlined),
-                        label: const Text('Home'),
+                        label: const Text(
+                          'Home',
+                          style: TextStyle(fontFamily: 'SF Pro'),
+                        ),
                         onPressed: () {
                           Navigator.pop(context); // Schließt den Drawer
                           ScaffoldMessenger.of(context).showSnackBar(
@@ -161,7 +189,9 @@ class _MyAppState extends State<MyApp> {
                             borderRadius: BorderRadius.circular(8.0),
                           ),
                         ),
-                        icon: const Icon(Icons.home_outlined),
+                        icon: const ImageIcon(
+                          AssetImage('assets/icons/timeline_icon.png'),
+                        ),
                         label: const Text('Timeline'),
                         onPressed: () {
                           // Aktion beim Tippen auf 'Informationen'
@@ -212,7 +242,7 @@ class _MyAppState extends State<MyApp> {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8.0),
                           ),
-                        ),
+                        ), // End of styleFrom
                         icon: const Icon(Icons.favorite_outline),
                         label: const Text('Favoriten'),
                         onPressed: () {
@@ -222,8 +252,8 @@ class _MyAppState extends State<MyApp> {
                             const SnackBar(
                               content: Text('Favoriten ausgewählt'),
                             ),
-                          );
-                        },
+                          ); // End of ScaffoldMessenger
+                        }, // End of onPressed
                       ),
                       const SizedBox(height: 12),
                       FilledButton.icon(
@@ -257,6 +287,7 @@ class _MyAppState extends State<MyApp> {
             ),
           ),
         ),
+
         body: Center(
           child: ListView(
             padding: const EdgeInsets.fromLTRB(16, 16, 16, 16),
@@ -315,7 +346,7 @@ class _MyAppState extends State<MyApp> {
                               ),
                             ),
                             SizedBox(height: 8),
-                          ],
+                          ], // Children of the Column
                         ),
                       ),
                       Card(
@@ -370,7 +401,7 @@ class _MyAppState extends State<MyApp> {
                           ],
                         ),
                       ),
-                    ],
+                    ], // Ende der Column
                   ),
                 ),
               ),
@@ -434,7 +465,7 @@ class _MyAppState extends State<MyApp> {
                                   ),
                                 ),
                               ),
-                            ],
+                            ], // Children der Column
                           ),
                         ),
                       ),
@@ -493,7 +524,7 @@ class _MyAppState extends State<MyApp> {
                                   ),
                                 ),
                               ),
-                            ],
+                            ], // Children des Column
                           ),
                         ),
                       ),
@@ -501,7 +532,7 @@ class _MyAppState extends State<MyApp> {
                   ],
                 ),
               ),
-            ],
+            ], // Children des Body
           ),
         ),
         bottomNavigationBar: BottomNavigationBar(
@@ -535,7 +566,7 @@ class _MyAppState extends State<MyApp> {
               icon: ImageIcon(AssetImage('assets/icons/settings_icon.png')),
               label: '',
             ),
-          ],
+          ], // Items
         ),
       ),
       debugShowCheckedModeBanner: false,
