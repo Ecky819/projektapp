@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'widgets/bottomnavigation.dart';
+import 'widgets/custom_appbar_with_logo.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,8 +26,7 @@ class _MyAppState extends State<MyApp> {
 
     switch (index) {
       case 0:
-        
-        //print('Home Icon getippt');
+        print('Home Icon getippt');
         // Navigieren zum Home-Bildschirm oder entsprechende Aktion
         break;
       case 1:
@@ -52,242 +53,8 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         backgroundColor: const Color.fromRGBO(233, 229, 221, 1.0),
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(56.0),
-          child: AppBar(
-            backgroundColor: const Color.fromRGBO(40, 58, 73, 1.0),
-            iconTheme: const IconThemeData(
-              color: Colors.white, // Hamburger in weiß
-            ),
-            elevation: 0,
-            centerTitle: false,
-            titleSpacing: 0,
-            title: const Padding(
-              padding: EdgeInsets.all(0.0),
-              child: Image(
-                image: AssetImage('assets/images/Logo.png'),
-                height: 56,
-              ),
-            ),
-          ),
-        ),
-        // Hier wird der EndDrawer hinzugefügt
-        endDrawer: SizedBox(
-          width: 300,
-          height: 670,
-          child: Drawer(
-            backgroundColor: const Color.fromRGBO(243, 239, 231, 1.0),
-            child: ListView(
-              padding: EdgeInsets.zero, // Entfernt den Standard-Padding
-              children: <Widget>[
-                DrawerHeader(
-                  decoration: const BoxDecoration(
-                    color: Color.fromRGBO(40, 58, 73, 1.0),
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      const CircleAvatar(
-                        radius: 36,
-                        backgroundImage: AssetImage(
-                          'assets/images/default_avatar.jpg',
-                        ),
-                      ),
-                      const SizedBox(height: 12),
-                      const Text(
-                        'John Doe',
-                        style: TextStyle(
-                          fontFamily: 'SF Pro',
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                      ),
-                      const SizedBox(height: 4),
-                      const Text(
-                        'john.doe@example.com',
-                        style: TextStyle(
-                          fontFamily: 'SF Pro',
-                          fontSize: 14,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-
-                const SizedBox(height: 14),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(24.0, 0, 24.0, 0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      FilledButton.icon(
-                        style: FilledButton.styleFrom(
-                          backgroundColor: const Color.fromRGBO(
-                            40,
-                            58,
-                            73,
-                            1.0,
-                          ),
-                          foregroundColor: Colors.white,
-                          elevation: 4,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                        ),
-                        icon: const Icon(Icons.home_outlined),
-                        label: const Text(
-                          'Home',
-                          style: TextStyle(fontFamily: 'SF Pro'),
-                        ),
-                        onPressed: () {
-                          Navigator.pop(context); // Schließt den Drawer
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text('Home ausgewählt')),
-                          );
-                        },
-                      ),
-                      const SizedBox(height: 12),
-                      FilledButton.icon(
-                        style: FilledButton.styleFrom(
-                          backgroundColor: const Color.fromRGBO(
-                            40,
-                            58,
-                            73,
-                            1.0,
-                          ),
-                          foregroundColor: Colors.white,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                        ),
-                        icon: const Icon(Icons.settings_outlined),
-                        label: const Text('Datenbank'),
-                        onPressed: () {
-                          // Aktion beim Tippen auf 'Informationen'
-                          Navigator.pop(context); // Schließt den Drawer
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text('Datenbank ausgewählt'),
-                            ),
-                          );
-                        },
-                      ),
-                      const SizedBox(height: 12),
-                      FilledButton.icon(
-                        style: FilledButton.styleFrom(
-                          backgroundColor: const Color.fromRGBO(
-                            40,
-                            58,
-                            73,
-                            1.0,
-                          ),
-                          foregroundColor: Colors.white,
-                          elevation: 4,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                        ),
-                        icon: const ImageIcon(
-                          AssetImage('assets/icons/timeline_icon.png'),
-                        ),
-                        label: const Text('Timeline'),
-                        onPressed: () {
-                          // Aktion beim Tippen auf 'Informationen'
-                          Navigator.pop(context); // Schließt den Drawer
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text('Timeline ausgewählt'),
-                            ),
-                          );
-                        },
-                      ),
-                      const SizedBox(height: 12),
-                      FilledButton.icon(
-                        style: FilledButton.styleFrom(
-                          backgroundColor: const Color.fromRGBO(
-                            40,
-                            58,
-                            73,
-                            1.0,
-                          ),
-                          foregroundColor: Colors.white,
-                          elevation: 4,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                        ),
-                        icon: const Icon(Icons.map_outlined),
-                        label: const Text('Karte'),
-                        onPressed: () {
-                          // Aktion beim Tippen auf 'Informationen'
-                          Navigator.pop(context); // Schließt den Drawer
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text('Karte ausgewählt')),
-                          );
-                        },
-                      ),
-                      const SizedBox(height: 12),
-                      FilledButton.icon(
-                        style: FilledButton.styleFrom(
-                          backgroundColor: const Color.fromRGBO(
-                            40,
-                            58,
-                            73,
-                            1.0,
-                          ),
-                          foregroundColor: Colors.white,
-                          elevation: 4,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                        ), // End of styleFrom
-                        icon: const Icon(Icons.favorite_outline),
-                        label: const Text('Favoriten'),
-                        onPressed: () {
-                          // Aktion beim Tippen auf 'Informationen'
-                          Navigator.pop(context); // Schließt den Drawer
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text('Favoriten ausgewählt'),
-                            ),
-                          ); // End of ScaffoldMessenger
-                        }, // End of onPressed
-                      ),
-                      const SizedBox(height: 12),
-                      FilledButton.icon(
-                        style: FilledButton.styleFrom(
-                          backgroundColor: const Color.fromRGBO(
-                            40,
-                            58,
-                            73,
-                            1.0,
-                          ),
-                          foregroundColor: Colors.white,
-                          elevation: 4,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                        ),
-                        icon: const Icon(Icons.person_2_outlined),
-                        label: const Text('Profil'),
-                        onPressed: () {
-                          // Aktion beim Tippen auf 'Informationen'
-                          Navigator.pop(context); // Schließt den Drawer
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text('Profil ausgewählt')),
-                          );
-                        },
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-
+        appBar: CustomAppBarWithLogo(context: context),
+        endDrawer: const CustomDrawer(),
         body: Center(
           child: ListView(
             padding: const EdgeInsets.fromLTRB(16, 16, 16, 16),
@@ -535,38 +302,9 @@ class _MyAppState extends State<MyApp> {
             ], // Children des Body
           ),
         ),
-        bottomNavigationBar: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
-          showSelectedLabels: false,
-          showUnselectedLabels: false,
-          backgroundColor: const Color.fromRGBO(40, 58, 73, 1.0),
-          selectedItemColor: const Color.fromRGBO(131, 132, 140, 1.0),
-          unselectedItemColor: const Color.fromARGB(255, 255, 255, 255),
-          iconSize: 35,
-          currentIndex: _selectedIndex, // Setzt den aktuell ausgewählten Index
-          onTap: _onItemTapped, // Fügt die onTap-Funktion hinzu
-          items: [
-            BottomNavigationBarItem(
-              icon: ImageIcon(AssetImage('assets/icons/home_icon.png')),
-              label: '',
-            ),
-            BottomNavigationBarItem(
-              icon: ImageIcon(AssetImage('assets/icons/timeline_icon.png')),
-              label: '',
-            ),
-            BottomNavigationBarItem(
-              icon: ImageIcon(AssetImage('assets/icons/map_icon.png')),
-              label: '',
-            ),
-            BottomNavigationBarItem(
-              icon: ImageIcon(AssetImage('assets/icons/favorite_icon.png')),
-              label: '',
-            ),
-            BottomNavigationBarItem(
-              icon: ImageIcon(AssetImage('assets/icons/settings_icon.png')),
-              label: '',
-            ),
-          ], // Items
+        bottomNavigationBar: CustomBottomNavigationBar(
+          currentIndex: _selectedIndex,
+          onTap: _onItemTapped,
         ),
       ),
       debugShowCheckedModeBanner: false,
