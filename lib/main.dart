@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'widgets/bottomnavigation.dart';
+import 'widgets/bottom_navigation.dart';
 import 'widgets/custom_appbar_with_logo.dart';
 
 void main() {

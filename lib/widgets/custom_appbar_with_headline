@@ -18,7 +18,8 @@ class CustomAppBarWithLogo extends StatelessWidget
         titleSpacing: 0,
         title: const Padding(
           padding: EdgeInsets.all(0.0),
-          child: Image(image: AssetImage('assets/logos/Logo.png'), height: 56),
+          child: icon: ImageIcon(AssetImage('assets/icons/back_button.png')),
+          label: '',
         ),
       ),
     );
