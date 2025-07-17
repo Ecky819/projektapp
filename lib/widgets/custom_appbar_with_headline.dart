@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 
-class CustomAppBarWithLogo extends StatelessWidget
+class CustomAppBarWithHeadline extends StatelessWidget
     implements PreferredSizeWidget {
-  final BuildContext context;
+  final String title; // 1. Titel hinzugefügt
 
-  const CustomAppBarWithLogo({super.key, required this.context});
+  const CustomAppBarWithHeadline({
+    super.key,
+    required this.title, // 2. Titel gefordert
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -16,10 +19,18 @@ class CustomAppBarWithLogo extends StatelessWidget
         elevation: 0,
         centerTitle: false,
         titleSpacing: 0,
-        title: const Padding(
-          padding: EdgeInsets.all(0.0),
-          child: icon: ImageIcon(AssetImage('assets/icons/back_button.png')),
-          label: '',
+        leading: IconButton(
+          icon: ImageIcon(AssetImage('assets/icons/back_button.png')),
+          onPressed: () => Navigator.of(context).maybePop(),
+        ),
+        title: Text(
+          title, // 3. Dynamischer Titel
+          style: const TextStyle(
+            fontFamily: 'SF Pro',
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+            fontSize: 20,
+          ),
         ),
       ),
     );

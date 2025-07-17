@@ -1,46 +1,73 @@
 import 'package:flutter/material.dart';
 
-class CustomBottomNavigationBar extends StatelessWidget {
-  final int currentIndex;
-  final Function(int) onTap;
+class CustomNavigationBar extends StatelessWidget {
+  final int selectedIndex;
+  final Function(int) onDestinationSelected;
 
-  const CustomBottomNavigationBar({
+  const CustomNavigationBar({
     super.key,
-    required this.currentIndex,
-    required this.onTap,
+    required this.selectedIndex,
+    required this.onDestinationSelected,
   });
 
   @override
   Widget build(BuildContext context) {
-    return BottomNavigationBar(
-      type: BottomNavigationBarType.fixed,
-      showSelectedLabels: false,
-      showUnselectedLabels: false,
+    return NavigationBar(
+      selectedIndex: selectedIndex,
+      onDestinationSelected: onDestinationSelected,
+      height: 70,
       backgroundColor: const Color.fromRGBO(40, 58, 73, 1.0),
-      selectedItemColor: const Color.fromRGBO(131, 132, 140, 1.0),
-      unselectedItemColor: const Color.fromARGB(255, 255, 255, 255),
-      iconSize: 35,
-      currentIndex: currentIndex,
-      onTap: onTap,
-      items: const [
-        BottomNavigationBarItem(
-          icon: ImageIcon(AssetImage('assets/icons/home_icon.png')),
+      indicatorColor: Colors.transparent,
+      labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
+      destinations: [
+        NavigationDestination(
+          icon: ImageIcon(
+            const AssetImage('assets/icons/home_icon.png'),
+            size: 35,
+            color: selectedIndex == 0
+                ? const Color.fromRGBO(131, 132, 140, 1.0)
+                : Colors.white,
+          ),
           label: '',
         ),
-        BottomNavigationBarItem(
-          icon: ImageIcon(AssetImage('assets/icons/timeline_icon.png')),
+        NavigationDestination(
+          icon: ImageIcon(
+            const AssetImage('assets/icons/timeline_icon.png'),
+            size: 35,
+            color: selectedIndex == 1
+                ? const Color.fromRGBO(131, 132, 140, 1.0)
+                : Colors.white,
+          ),
           label: '',
         ),
-        BottomNavigationBarItem(
-          icon: ImageIcon(AssetImage('assets/icons/map_icon.png')),
+        NavigationDestination(
+          icon: ImageIcon(
+            const AssetImage('assets/icons/map_icon.png'),
+            size: 35,
+            color: selectedIndex == 2
+                ? const Color.fromRGBO(131, 132, 140, 1.0)
+                : Colors.white,
+          ),
           label: '',
         ),
-        BottomNavigationBarItem(
-          icon: ImageIcon(AssetImage('assets/icons/favorite_icon.png')),
+        NavigationDestination(
+          icon: ImageIcon(
+            const AssetImage('assets/icons/favorite_icon.png'),
+            size: 35,
+            color: selectedIndex == 3
+                ? const Color.fromRGBO(131, 132, 140, 1.0)
+                : Colors.white,
+          ),
           label: '',
         ),
-        BottomNavigationBarItem(
-          icon: ImageIcon(AssetImage('assets/icons/settings_icon.png')),
+        NavigationDestination(
+          icon: ImageIcon(
+            const AssetImage('assets/icons/settings_icon.png'),
+            size: 35,
+            color: selectedIndex == 4
+                ? const Color.fromRGBO(131, 132, 140, 1.0)
+                : Colors.white,
+          ),
           label: '',
         ),
       ],

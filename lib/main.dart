@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'widgets/bottom_navigation.dart';
 import 'widgets/custom_appbar_with_logo.dart';
+// Ensure the following import is correct and the file exists
+// If CustomBottomNavigationBar is defined elsewhere, adjust the import accordingly
 
 void main() {
   runApp(const MyApp());
@@ -302,9 +304,13 @@ class _MyAppState extends State<MyApp> {
             ], // Children des Body
           ),
         ),
-        bottomNavigationBar: CustomBottomNavigationBar(
-          currentIndex: _selectedIndex,
-          onTap: _onItemTapped,
+        bottomNavigationBar: CustomNavigationBar(
+          selectedIndex: _selectedIndex,
+          onDestinationSelected: (index) {
+            setState(() {
+              _selectedIndex = index;
+            });
+          },
         ),
       ),
       debugShowCheckedModeBanner: false,
