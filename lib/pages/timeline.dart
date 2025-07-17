@@ -66,7 +66,7 @@ class DatenbankPage extends StatelessWidget {
       appBar: const CustomAppBarWithHeadline(title: 'Datenbank'),
       drawer: const CustomDrawer(),
       body: const Center(child: Text('Datenbank Inhalte')),
-      bottomNavigationBar: CustomBottomNavigationBar(
+      bottomNavigationBar: CustomNavigationBar(
         currentIndex: selectedIndex,
         onTap: onItemTapped,
       ),

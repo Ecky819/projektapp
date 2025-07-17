@@ -20,36 +20,6 @@ class _MyAppState extends State<MyApp> {
   int _selectedIndex =
       0; // Der aktuell ausgewählte Index der BottomNavigationBar
 
-  // Diese Funktion wird aufgerufen, wenn ein Icon in der BottomNavigationBar getippt wird.
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-
-    switch (index) {
-      case 0:
-        print('Home Icon getippt');
-        // Navigieren zum Home-Bildschirm oder entsprechende Aktion
-        break;
-      case 1:
-        print('Timeline Icon getippt');
-        // Navigieren zur Timeline oder entsprechende Aktion
-        break;
-      case 2:
-        print('Map Icon getippt');
-        // Navigieren zur Karte oder entsprechende Aktion
-        break;
-      case 3:
-        print('Favorite Icon getippt');
-        // Navigieren zu den Favoriten oder entsprechende Aktion
-        break;
-      case 4:
-        print('Settings Icon getippt');
-        // Navigieren zu den Einstellungen oder entsprechende Aktion
-        break;
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
