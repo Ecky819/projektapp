@@ -16,8 +16,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  int _selectedIndex =
-      0; 
+  int _selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -57,14 +56,18 @@ class _MyAppState extends State<MyApp> {
                       width: 167,
                       margin: EdgeInsets.only(right: 16),
                       child: QuicklinkCard(
-                        text: 'TIMELINE',
+                        title: 'TIMELINE',
+                        text:
+                            'Hier finden sie alle historischen Ereignisse in Griechenland von 1941 bis 1945.',
                         imagePath: 'assets/icons/more_info.png',
                       ),
                     ),
                     SizedBox(
                       width: 167,
                       child: QuicklinkCard(
-                        text: 'TIMELINE',
+                        title: 'KARTE',
+                        text:
+                            'Hier finden sie unsere Karte auf der alle Lagerstandorte verzeichnet sind.',
                         imagePath: 'assets/icons/more_info.png',
                       ),
                     ),

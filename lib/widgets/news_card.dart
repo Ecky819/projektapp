@@ -9,9 +9,9 @@ class NewsCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: Color.fromRGBO(243, 239, 231, 1.0),
+      color: const Color.fromRGBO(243, 239, 231, 1.0),
       elevation: 10,
-      margin: EdgeInsets.symmetric(vertical: 8),
+      margin: const EdgeInsets.symmetric(vertical: 8),
       child: Column(
         children: [
           Padding(
@@ -19,18 +19,14 @@ class NewsCard extends StatelessWidget {
             child: Material(
               elevation: 4,
               borderRadius: BorderRadius.circular(4),
-              child: Image.asset(
-                'assets/images/athen_home.jpg',
-                width: 180,
-                fit: BoxFit.cover,
-              ),
+              child: Image.asset(imagePath, width: 180, fit: BoxFit.cover),
             ),
           ),
           ListTile(
             title: Text(
-              '80 Jahre Kriegsende in Athen',
+              title,
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontFamily: 'SFPro',
                 fontSize: 14,
@@ -42,11 +38,9 @@ class NewsCard extends StatelessWidget {
             child: Material(
               elevation: 4,
               borderRadius: BorderRadius.circular(4),
-              // Wrap Image.asset with InkWell for tap functionality
               child: InkWell(
                 onTap: () {
-                  print('More info for Athen tapped!');
-                  // Hier können Sie Navigationslogik oder andere Aktionen hinzufügen
+                  print('More info for $title tapped!');
                 },
                 child: Image.asset(
                   'assets/icons/more_info.png',
@@ -56,8 +50,8 @@ class NewsCard extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 8),
-        ], // Children of the Column
+          const SizedBox(height: 8),
+        ],
       ),
     );
   }

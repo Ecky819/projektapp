@@ -77,23 +77,29 @@ class CustomDrawer extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 14),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(24.0, 0, 24.0, 0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  _drawerButton(context, Icons.home_outlined, 'Home'),
-                  _drawerButton(context, Icons.settings_outlined, 'Datenbank'),
-                  _drawerButton(
-                    context,
-                    null,
-                    'Timeline',
-                    iconAsset: 'assets/icons/timeline_icon.png',
-                  ),
-                  _drawerButton(context, Icons.map_outlined, 'Karte'),
-                  _drawerButton(context, Icons.favorite_outline, 'Favoriten'),
-                  _drawerButton(context, Icons.person_2_outlined, 'Profil'),
-                ],
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(24.0, 0, 24.0, 0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    _drawerButton(context, Icons.home_outlined, 'Home'),
+                    _drawerButton(
+                      context,
+                      Icons.settings_outlined,
+                      'Datenbank',
+                    ),
+                    _drawerButton(
+                      context,
+                      null,
+                      'Timeline',
+                      iconAsset: 'assets/icons/timeline_icon.png',
+                    ),
+                    _drawerButton(context, Icons.map_outlined, 'Karte'),
+                    _drawerButton(context, Icons.favorite_outline, 'Favoriten'),
+                    _drawerButton(context, Icons.person_2_outlined, 'Profil'),
+                  ],
+                ),
               ),
             ),
           ],
