@@ -15,7 +15,7 @@ class CustomNavigationBar extends StatelessWidget {
     return NavigationBar(
       selectedIndex: selectedIndex,
       onDestinationSelected: onDestinationSelected,
-      height: 70,
+      height: 55,
       backgroundColor: const Color.fromRGBO(40, 58, 73, 1.0),
       indicatorColor: Colors.transparent,
       labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'widgets/bottom_navigation.dart';
 import 'widgets/custom_appbar_with_logo.dart';
+import 'widgets/news_card.dart';
+
 // Ensure the following import is correct and the file exists
 // If CustomBottomNavigationBar is defined elsewhere, adjust the import accordingly
 
@@ -29,6 +31,7 @@ class _MyAppState extends State<MyApp> {
         endDrawer: const CustomDrawer(),
         body: Center(
           child: ListView(
+            physics: NeverScrollableScrollPhysics(),
             padding: const EdgeInsets.fromLTRB(16, 16, 16, 16),
             children: [
               Center(
@@ -36,109 +39,13 @@ class _MyAppState extends State<MyApp> {
                   constraints: BoxConstraints(maxWidth: 215),
                   child: Column(
                     children: [
-                      Card(
-                        color: Color.fromRGBO(243, 239, 231, 1.0),
-                        elevation: 10,
-                        margin: EdgeInsets.symmetric(vertical: 8),
-                        child: Column(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(top: 16.0),
-                              child: Material(
-                                elevation: 4,
-                                borderRadius: BorderRadius.circular(4),
-                                child: Image.asset(
-                                  'assets/images/athen_home.jpg',
-                                  width: 180,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                            ),
-                            ListTile(
-                              title: Text(
-                                '80 Jahre Kriegsende in Athen',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: 'SFPro',
-                                  fontSize: 14,
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(bottom: 8.0),
-                              child: Material(
-                                elevation: 4,
-                                borderRadius: BorderRadius.circular(4),
-                                // Wrap Image.asset with InkWell for tap functionality
-                                child: InkWell(
-                                  onTap: () {
-                                    print('More info for Athen tapped!');
-                                    // Hier können Sie Navigationslogik oder andere Aktionen hinzufügen
-                                  },
-                                  child: Image.asset(
-                                    'assets/icons/more_info.png',
-                                    width: 76,
-                                    height: 26,
-                                  ),
-                                ),
-                              ),
-                            ),
-                            SizedBox(height: 8),
-                          ], // Children of the Column
-                        ),
+                      NewsCard(
+                        imagePath: 'assets/images/athen_home.jpg',
+                        title: '80 Jahre Kriegsende in Athen',
                       ),
-                      Card(
-                        color: Color.fromRGBO(243, 239, 231, 1.0),
-                        elevation: 10,
-                        margin: EdgeInsets.symmetric(vertical: 8),
-                        child: Column(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(top: 16.0),
-                              child: Material(
-                                elevation: 4,
-                                borderRadius: BorderRadius.circular(4),
-                                child: Image.asset(
-                                  'assets/images/thessaloniki_home.jpg',
-                                  width: 180,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                            ),
-                            ListTile(
-                              title: Text(
-                                '80 Jahre Kriegsende in Thessalonikki',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: 'SFPro',
-                                  fontSize: 14,
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(bottom: 8.0),
-                              child: Material(
-                                elevation: 4,
-                                borderRadius: BorderRadius.circular(4),
-                                // Wrap Image.asset with InkWell for tap functionality
-                                child: InkWell(
-                                  onTap: () {
-                                    print('More info for Thessaloniki tapped!');
-                                    // Hier können Sie Navigationslogik oder andere Aktionen hinzufügen
-                                  },
-                                  child: Image.asset(
-                                    'assets/icons/more_info.png',
-                                    width: 76,
-                                    height: 26,
-                                  ),
-                                ),
-                              ),
-                            ),
-                            SizedBox(height: 8),
-                          ],
-                        ),
+                      NewsCard(
+                        title: '80 Jahre Kriegsende in Thessalonikki',
+                        imagePath: 'assets/images/thessaloniki_home.jpg',
                       ),
                     ], // Ende der Column
                   ),
