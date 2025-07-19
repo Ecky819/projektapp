@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'widgets/bottom_navigation.dart';
 import 'widgets/custom_appbar_with_logo.dart';
-import 'widgets/news_card.dart';
-import 'widgets/quicklink_card.dart';
+import 'widgets/home_screen.dart';
+import 'widgets/timeline_screen.dart';
+import 'widgets/map_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,6 +19,12 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   int _selectedIndex = 0;
 
+  final List<Widget> _pages = [
+    const HomeScreen(),
+    const TimelineScreen(),
+    const MapScreen(),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -25,58 +32,7 @@ class _MyAppState extends State<MyApp> {
         backgroundColor: const Color.fromRGBO(233, 229, 221, 1.0),
         appBar: CustomAppBarWithLogo(context: context),
         endDrawer: const CustomDrawer(),
-        body: Center(
-          child: ListView(
-            physics: NeverScrollableScrollPhysics(),
-            padding: const EdgeInsets.fromLTRB(16, 16, 16, 16),
-            children: [
-              Center(
-                child: ConstrainedBox(
-                  constraints: BoxConstraints(maxWidth: 215),
-                  child: Column(
-                    children: [
-                      NewsCard(
-                        imagePath: 'assets/images/athen_home.jpg',
-                        title: '80 Jahre Kriegsende in Athen',
-                      ),
-                      NewsCard(
-                        title: '80 Jahre Kriegsende in Thessalonikki',
-                        imagePath: 'assets/images/thessaloniki_home.jpg',
-                      ),
-                    ], // Ende der Column
-                  ),
-                ),
-              ),
-              SizedBox(height: 16),
-              Center(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Container(
-                      width: 167,
-                      margin: EdgeInsets.only(right: 16),
-                      child: QuicklinkCard(
-                        title: 'TIMELINE',
-                        text:
-                            'Hier finden sie alle historischen Ereignisse in Griechenland von 1941 bis 1945.',
-                        imagePath: 'assets/icons/more_info.png',
-                      ),
-                    ),
-                    SizedBox(
-                      width: 167,
-                      child: QuicklinkCard(
-                        title: 'KARTE',
-                        text:
-                            'Hier finden sie unsere Karte auf der alle Lagerstandorte verzeichnet sind.',
-                        imagePath: 'assets/icons/more_info.png',
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ], // Children des Body
-          ),
-        ),
+        body: _pages[_selectedIndex],
         bottomNavigationBar: CustomNavigationBar(
           selectedIndex: _selectedIndex,
           onDestinationSelected: (index) {
