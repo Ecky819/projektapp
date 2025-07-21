@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
+import '../theme/app_textstyles.dart';
+import '../theme/app_colors.dart';
 
 class CustomAppBarWithLogo extends StatelessWidget
     implements PreferredSizeWidget {
   final BuildContext context;
+  final VoidCallback? navigateToTimeline;
 
-  const CustomAppBarWithLogo({super.key, required this.context});
+  const CustomAppBarWithLogo({
+    super.key,
+    required this.context,
+    this.navigateToTimeline,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +36,24 @@ class CustomAppBarWithLogo extends StatelessWidget
 }
 
 class CustomDrawer extends StatelessWidget {
-  const CustomDrawer({super.key});
+  final VoidCallback navigateToTimeline;
+  final VoidCallback navigateToMap;
+  final VoidCallback navigateToHome;
+  final VoidCallback navigateToFavorites;
+  final VoidCallback navigateToProfile;
+  final VoidCallback navigateToDatabase;
+  final VoidCallback navigateToNews;
+
+  const CustomDrawer({
+    super.key,
+    required this.navigateToTimeline,
+    required this.navigateToMap,
+    required this.navigateToHome,
+    required this.navigateToFavorites,
+    required this.navigateToProfile,
+    required this.navigateToDatabase,
+    required this.navigateToNews,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -37,14 +61,12 @@ class CustomDrawer extends StatelessWidget {
       width: 300,
       height: 670,
       child: Drawer(
-        backgroundColor: const Color.fromRGBO(243, 239, 231, 1.0),
+        backgroundColor: AppColors.secondary,
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
             DrawerHeader(
-              decoration: const BoxDecoration(
-                color: Color.fromRGBO(40, 58, 73, 1.0),
-              ),
+              decoration: const BoxDecoration(color: AppColors.primary),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -56,50 +78,87 @@ class CustomDrawer extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 12),
-                  const Text(
-                    'John Doe',
-                    style: TextStyle(
-                      fontFamily: 'SF Pro',
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  ),
+                  Text('John Doe', style: AppTextStyles.drawerUserName),
                   const SizedBox(height: 4),
-                  const Text(
+                  Text(
                     'john.doe@example.com',
-                    style: TextStyle(
-                      fontFamily: 'SF Pro',
-                      fontSize: 14,
-                      color: Colors.white,
-                    ),
+                    style: AppTextStyles.drawerUserEmail,
                   ),
                 ],
               ),
             ),
             const SizedBox(height: 14),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(24.0, 0, 24.0, 0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    _drawerButton(context, Icons.home_outlined, 'Home'),
-                    _drawerButton(
-                      context,
-                      Icons.settings_outlined,
-                      'Datenbank',
-                    ),
-                    _drawerButton(
-                      context,
-                      null,
-                      'Timeline',
-                      iconAsset: 'assets/icons/timeline_icon.png',
-                    ),
-                    _drawerButton(context, Icons.map_outlined, 'Karte'),
-                    _drawerButton(context, Icons.favorite_outline, 'Favoriten'),
-                    _drawerButton(context, Icons.person_2_outlined, 'Profil'),
-                  ],
-                ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(24.0, 0, 24.0, 0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  _drawerButton(
+                    context,
+                    icon: Icons.home_outlined,
+                    text: 'Home',
+                    onTap: () {
+                      Navigator.pop(context);
+                      navigateToHome();
+                    },
+                  ),
+                  _drawerButton(
+                    context,
+                    icon: Icons.settings,
+                    text: 'Datenbank',
+                    onTap: () {
+                      Navigator.pop(context);
+                      navigateToDatabase();
+                    },
+                  ),
+                  _drawerButton(
+                    context,
+                    icon: Icons.newspaper_outlined,
+                    text: 'News',
+                    onTap: () {
+                      Navigator.pop(context);
+                      navigateToNews();
+                    },
+                  ),
+                  _drawerButton(
+                    context,
+                    icon: null,
+                    text: 'Timeline',
+                    iconAsset: 'assets/icons/timeline_icon.png',
+                    onTap: () {
+                      Navigator.pop(context);
+                      navigateToTimeline();
+                    },
+                  ),
+                  _drawerButton(
+                    context,
+                    icon: Icons.map_outlined,
+                    text: 'Karte',
+                    onTap: () {
+                      Navigator.pop(context);
+                      navigateToMap();
+                    },
+                  ),
+                  _drawerButton(
+                    context,
+                    icon: Icons.favorite_outline,
+                    text: 'Favoriten',
+                    onTap: () {
+                      Navigator.pop(context);
+                      navigateToFavorites();
+                    },
+                  ),
+                  _drawerButton(
+                    context,
+                    icon: Icons.person_outline,
+                    text: 'Profil',
+                    onTap: () {
+                      Navigator.pop(context);
+                      navigateToProfile();
+                    },
+                  ),
+                  // Weitere Buttons...
+                ],
               ),
             ),
           ],
@@ -109,16 +168,17 @@ class CustomDrawer extends StatelessWidget {
   }
 
   Widget _drawerButton(
-    BuildContext context,
+    BuildContext context, {
     IconData? icon,
-    String text, {
+    required String text,
     String? iconAsset,
+    required VoidCallback onTap,
   }) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 12.0),
       child: FilledButton.icon(
         style: FilledButton.styleFrom(
-          backgroundColor: const Color.fromRGBO(40, 58, 73, 1.0),
+          backgroundColor: AppColors.primary,
           foregroundColor: Colors.white,
           elevation: 4,
           shape: RoundedRectangleBorder(
@@ -127,12 +187,7 @@ class CustomDrawer extends StatelessWidget {
         ),
         icon: iconAsset != null ? ImageIcon(AssetImage(iconAsset)) : Icon(icon),
         label: Text(text, style: const TextStyle(fontFamily: 'SF Pro')),
-        onPressed: () {
-          Navigator.pop(context);
-          ScaffoldMessenger.of(
-            context,
-          ).showSnackBar(SnackBar(content: Text('$text ausgewählt')));
-        },
+        onPressed: onTap,
       ),
     );
   }

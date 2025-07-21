@@ -6,10 +6,7 @@ class MapScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Center(
-      child: Text(
-        'Map Screen',
-        style: TextStyle(fontSize: 24),
-      ),
+      child: Text('Map Screen', style: TextStyle(fontSize: 24)),
     );
   }
 }

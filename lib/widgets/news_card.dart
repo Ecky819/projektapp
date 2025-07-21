@@ -3,8 +3,14 @@ import 'package:flutter/material.dart';
 class NewsCard extends StatelessWidget {
   final String title;
   final String imagePath;
+  final VoidCallback navigateToNews;
 
-  const NewsCard({super.key, required this.title, required this.imagePath});
+  const NewsCard({
+    super.key,
+    required this.title,
+    required this.imagePath,
+    required this.navigateToNews,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -39,9 +45,7 @@ class NewsCard extends StatelessWidget {
               elevation: 4,
               borderRadius: BorderRadius.circular(4),
               child: InkWell(
-                onTap: () {
-                  print('More info for $title tapped!');
-                },
+                onTap: navigateToNews,
                 child: Image.asset(
                   'assets/icons/more_info.png',
                   width: 76,

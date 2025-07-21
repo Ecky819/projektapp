@@ -4,12 +4,14 @@ class QuicklinkCard extends StatelessWidget {
   final String title;
   final String text;
   final String imagePath;
+  final VoidCallback? onTap;
 
   const QuicklinkCard({
     super.key,
     required this.title,
     required this.text,
     required this.imagePath,
+    this.onTap,
   });
 
   @override
@@ -47,9 +49,7 @@ class QuicklinkCard extends StatelessWidget {
               elevation: 4,
               borderRadius: BorderRadius.circular(4),
               child: InkWell(
-                onTap: () {
-                  print('More info for $title tapped!');
-                },
+                onTap: onTap,
                 child: Image.asset(imagePath, width: 76, height: 26),
               ),
             ),
