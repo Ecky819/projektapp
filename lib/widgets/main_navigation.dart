@@ -70,7 +70,6 @@ class _MainNavigationState extends State<MainNavigation> {
 
   // News Navigation unabhängig vom BottomNavigationBar
   void navigateToDatabase() {
-    Navigator.pop(context); // Drawer schließen
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => const DatabaseScreen()),
