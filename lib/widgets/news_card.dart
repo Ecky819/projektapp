@@ -24,7 +24,7 @@ class NewsCard extends StatelessWidget {
             padding: const EdgeInsets.only(top: 16.0),
             child: Material(
               elevation: 4,
-              borderRadius: BorderRadius.circular(4),
+              borderRadius: BorderRadius.circular(8),
               child: Image.asset(imagePath, width: 180, fit: BoxFit.cover),
             ),
           ),
