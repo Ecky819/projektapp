@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../widgets/news_card.dart';
-import '../../widgets/quicklink_card.dart';
+import '../../common/news_card.dart';
+import '../../common/quicklink_card.dart';
 //import 'timeline_screen.dart';
 //import 'map_screen.dart';
 

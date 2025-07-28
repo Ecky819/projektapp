@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'widgets/main_navigation.dart';
-import 'theme/app_theme.dart';
+import 'src/common/main_navigation.dart';
+import 'src/theme/app_theme.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();

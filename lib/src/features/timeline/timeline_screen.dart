@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '/theme/app_textstyles.dart';
-import '/theme/app_colors.dart';
+import '../../theme/app_textstyles.dart';
+import '../../theme/app_colors.dart';
 import 'details/detail_28oktober1940.dart';
 import 'details/detail_april1941.dart';
 import 'details/detail_sommer1941.dart';
